@@ -11,7 +11,7 @@ conda create -n PAMpredict -c conda-forge -c bioconda python=3 argparse biopytho
 git clone https://github.com/Matteo-Ciciani/PAMpredict
 conda activate PAMpredict
 cd PAMpredict
-PAMpredict.py -h
+PAMpredict/PAMpredict.py -h
 ```
 ### Phage Databases
 
@@ -38,7 +38,7 @@ makeblastdb -in Example/Phages/phages.fna -dbtype nucl -parse_seqids
 
 Then run the prediction with:
 ```sh
-PAMpredict.py Example/spacers.fna Example/Phages Example/outdir
+PAMpredict/PAMpredict.py Example/spacers.fna Example/Phages Example/outdir
 ```
 
 Resulting in a PAM identified downstream of the putative protospacers.
