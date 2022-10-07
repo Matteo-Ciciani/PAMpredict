@@ -65,7 +65,7 @@ Resulting in a PAM identified downstream of the putative protospacers.
 
 -f, --format: File format of the PAM plot (png,ps,eps,svg,pdf) [default:png].
 
--l, --pam_length: Number of PAM positions use to generate predictions and plot [default:10].
+-l, --pam_length: Number of PAM positions used to generate predictions and plot [default:10].
 
 --no_plot: Suppress plot generation.
 
