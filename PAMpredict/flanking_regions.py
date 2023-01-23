@@ -52,7 +52,7 @@ class Flanking_Regions:
                         send-self.flank_len-1):max(0,send-1)]).reverse_complement()))
             self.filtered_matches[phage_fasta] = self.filtered_matches[
                 phage_fasta].assign(**{'Upstream':upstream_seqs,
-                'Downstream':upstream_seqs})
+                'Downstream':downstream_seqs})
             if self.keep_tmp:
                 for phage_fasta in self.filtered_matches:
                     self.filtered_matches[phage_fasta].to_csv(os.path.join(
@@ -66,6 +66,9 @@ class Flanking_Regions:
     def realign_one_spacer(self, spacer):
         seqs_to_align = []
         us_matches = self.filtered_matches[self.filtered_matches['qseqid']==spacer]
+        # if there's only 1 sequence, just return its flanking sequences
+        if us_matches.shape[0]==1:
+            return us_matches.iloc[0]['Upstream'], us_matches.iloc[0]['Downstream']
         # make upstream + match + downstream sequeneces
         for i in us_matches.index:
             s = ''
@@ -73,8 +76,6 @@ class Flanking_Regions:
                 'sseq'], us_matches.loc[i, 'Downstream']]:
                 if type(x)==str: s+=x
             seqs_to_align.append(SeqIO.SeqRecord(Seq.Seq(s), id='{}_{}'.format(spacer, i)))
-        # if there's only 1 sequence, just return it
-        if len(seqs_to_align)==1: return [str(seqs_to_align[0].seq)]
         # write sequences
         fasta_to_align = os.path.join(self.realigndir, '{}_to_realign.fasta'.format(spacer))
         SeqIO.write(seqs_to_align, fasta_to_align, 'fasta')
