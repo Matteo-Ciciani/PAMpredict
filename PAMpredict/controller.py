@@ -21,7 +21,7 @@ class Controller:
         
         # Logger
         logging.basicConfig(format='\033[36m'+'[%(asctime)s] %(levelname)s:'+'\033[0m'+' %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=self.log_lvl)
-        logging.info('Running PAMpredict version {}'.format('0.0.1'))
+        logging.info('Running PAMpredict version {}'.format('1.0.1'))
         
         # Check arguments
         self.check_input()
@@ -55,7 +55,7 @@ class Controller:
                 if not all([x in ['A','T','C','G', 'N'] for x in fa.seq.upper()]):
                     logging.error('Spacer sequence ' + fa.id + ' contains invalid bases!')
                     sys.exit(1)
-                self.spacer_dict[fa.id] = fa.seq.upper()
+                self.spacer_dict[fa.id] = str(fa.seq.upper())
             
         # Check for numeric headers
         self.num_headers = False

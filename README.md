@@ -7,7 +7,7 @@ A package to predict protospacer adjactent motifs (PAMs) of Cas proteins.
 ## Installation
 
 ```sh
-conda create -n PAMpredict -c conda-forge -c bioconda python=3 argparse biopython pandas numpy scipy logomaker blast pysam mafft muscle samtools matplotlib logomaker sed
+conda create -n PAMpredict -c conda-forge -c bioconda python=3 argparse biopython pandas numpy scipy logomaker blast pysam mafft muscle=5.1 samtools matplotlib sed
 git clone https://github.com/Matteo-Ciciani/PAMpredict
 conda activate PAMpredict
 cd PAMpredict

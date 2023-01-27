@@ -8,6 +8,8 @@ import os
 import sys
 import argparse
 import logging
+import matplotlib
+matplotlib.use('Agg')
 from Bio import Seq,SeqIO
 import pandas as pd
 import numpy as np
@@ -28,7 +30,7 @@ from predict_pam import Predict_PAM
 ###############################
 
 # required
-ap = argparse.ArgumentParser(description='PAMpredict version {}'.format('1.0.0')) #pkg_resources.require("cctyper")[0].version))
+ap = argparse.ArgumentParser(description='PAMpredict version {}'.format('1.0.1')) #pkg_resources.require("cctyper")[0].version))
 ap.add_argument('spacers', help='Input fasta file of CRISPR spacers.')
 ap.add_argument('phage_db', help='Directory containing Blastn databases of phagic genomes.')
 ap.add_argument('outdir', help='Path to the output directory.')

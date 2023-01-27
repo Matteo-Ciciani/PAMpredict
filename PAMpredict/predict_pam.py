@@ -142,8 +142,8 @@ class Predict_PAM:
                 logging.info('Saving both flanking sequence logos...')
         
         # save PAM dataframes
-        pd.DataFrame(self.info_df['Upstream']).to_csv(os.path.join(self.outdir, 'upstream_flanking_sequence_info.tsv'), sep='\t')
-        pd.DataFrame(self.info_df['Downstream']).to_csv(os.path.join(self.outdir, 'downstream_flanking_sequence_info.tsv'), sep='\t')
+        pd.DataFrame(self.info_df['Upstream'][['A','C','G','T']]).to_csv(os.path.join(self.outdir, 'upstream_flanking_sequence_info.tsv'), sep='\t')
+        pd.DataFrame(self.info_df['Downstream'][['A','C','G','T']]).to_csv(os.path.join(self.outdir, 'downstream_flanking_sequence_info.tsv'), sep='\t')
 
     
     def plot(self):
