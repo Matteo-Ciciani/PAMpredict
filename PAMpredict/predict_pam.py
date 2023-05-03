@@ -35,6 +35,12 @@ class Predict_PAM:
                 if i <= len(seq):
                     if seq[-i]!='N':
                         self.info_df['Upstream'][-i][seq[-i]] +=1
+        # fill missing values
+        for pos in self.info_df:
+            for i in range(len(self.info_df[pos])):
+                for base in list('ACGT'):
+                    if base not in self.info_df[pos][i]:
+                        self.info_df[pos][i][base] = 0
         try:
             for pos in self.info_df:
                 freqs = pd.DataFrame(self.info_df[pos]).fillna(0)
